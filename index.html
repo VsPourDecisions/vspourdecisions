@@ -175,34 +175,47 @@ textarea {
   <p style="color:#888; font-size:14px; margin-bottom:30px;">
     Please allow 24 hours for a response.
   </p>
-  </div>
+
   <div class="form-container">
+
     <form action="https://formspree.io/f/xvzdzkne" method="POST">
-      
+
+      <!-- Subject line in your email -->
+      <input type="hidden" name="_subject" value="New Booking Request - V's Pour Decisions">
+
+      <!-- Name -->
       <input type="text" name="name" placeholder="Full Name" required>
 
+      <!-- Email -->
       <input type="email" name="email" placeholder="Email Address" required>
 
+      <!-- Phone -->
       <input type="tel" name="phone" placeholder="Phone Number">
 
+      <!-- Date -->
       <input type="date" name="event_date" required>
 
+      <!-- Location -->
       <input type="text" name="location" placeholder="Event Location">
 
+      <!-- Service -->
       <select name="service">
-        <option value="">Select Service Package</option>
+        <option value="">Service Type</option>
         <option>Basic Bartending</option>
-        <option>Full Cocktail Service</option>
+        <option>Full Cocktail Experience</option>
         <option>Wedding / Large Event</option>
       </select>
 
-      <textarea name="details" rows="4" placeholder="Tell us about your event..."></textarea>
+      <!-- Details -->
+      <textarea name="details" rows="3" placeholder="Tell us about your event..."></textarea>
 
+      <!-- Button -->
       <button type="submit" class="btn">Request Booking</button>
+
     </form>
+
   </div>
 </div>
-
 <!-- FOOTER -->
 <footer>
   © 2026 V's Pour Decisions | Mobile Bartending
