@@ -1,149 +1,132 @@
-🌐 Business Website Deployment with CI/CD Automation (DevOps Project)
-📌 Overview
+👉 `https://ywill77.github.io/vspourdecisions/`
 
-This project demonstrates the design, automation, and deployment of a business website using a DevOps-inspired workflow. It integrates version control, Python-based automation, and CI/CD pipelines to streamline deployment and improve reliability.
+# 🌐 VS Pour Decisions – Website Deployment Project
 
-The goal of this project is to simulate a real-world DevOps workflow by automating parts of the deployment process and maintaining a structured release pipeline using GitHub.
+## 📌 Overview
 
-🚀 Live Demo
+This project is a personal business website deployed using a DevOps-style workflow. It demonstrates my ability to build, manage, and deploy a static website using **version control, automation concepts, and production hosting via GitHub Pages**.
 
-🔗 [View Website](https://vspourdecisions.com/)
+The project reflects my ongoing transition into **DevOps Engineering**, focusing on practical deployment workflows, automation thinking, and infrastructure fundamentals.
 
-🛠️ Tech Stack
-Frontend: HTML, CSS, JavaScript
-Scripting & Automation: Python
-Version Control: Git & GitHub
-CI/CD Pipeline: GitHub Actions
-Hosting & Domain: Namecheap
-Deployment: Automated + manual hybrid workflow
-⚙️ Features
-Responsive business website for desktop and mobile
-Automated file preparation using Python scripting
-CI/CD pipeline for automated build and deployment
-Version-controlled development workflow
-Custom domain configured through Namecheap
-Streamlined deployment process with reduced manual steps
-🧠 DevOps Concepts Applied
-Version Control: Managed code changes using Git and GitHub
-Automation: Python scripts used to automate build and deployment preparation
-CI/CD: GitHub Actions pipeline triggers automated deployment on push
-Continuous Integration: Code changes are validated through structured workflow
-Continuous Deployment: Successful builds are automatically deployed to production
-Environment Consistency: Standardized deployment process across updates
-🐍 Python Automation Script Example
+---
 
-This script prepares the website files before deployment by organizing output files and ensuring a clean build directory.
+## 🚀 Live Website
 
+🔗 [https://ywill77.github.io/vspourdecisions/](https://ywill77.github.io/vspourdecisions/)
+
+---
+
+## 🛠️ Tech Stack
+
+* **Frontend:** HTML, CSS, JavaScript
+* **Hosting & Deployment:** GitHub Pages
+* **Version Control:** GitHub
+* **Automation / Scripting:** Python (workflow automation support concepts)
+* **CI/CD Concept:** Git-based deployment pipeline (Git push → automatic deployment)
+
+---
+
+## ⚙️ Features
+
+* Fully responsive business website
+* Live deployment through GitHub Pages
+* Custom branding and business content integration
+* Structured repository for maintainability
+* Git-based version control workflow
+* Fast global access via static hosting
+
+---
+
+## 🧠 DevOps Concepts Applied
+
+Although this is a static site project, it demonstrates foundational **DevOps practices**:
+
+* **Version Control:** Managed using Git and GitHub
+* **Continuous Deployment (CD):** Automatic deployment via GitHub Pages on push to main branch
+* **Automation Thinking:** Python scripting used for workflow optimization concepts (file handling / deployment preparation mindset)
+* **Environment Consistency:** Same codebase deployed from repository to production
+* **Infrastructure Awareness:** Understanding of static hosting vs dynamic infrastructure
+
+---
+
+## 🐍 Python Automation Concept (Workflow Support Example)
+
+This script represents how I approach automation for deployment preparation (file validation + build readiness):
+
+```python id="vsp-build-script"
 import os
-import shutil
 
-SOURCE_DIR = "src"
-BUILD_DIR = "dist"
+SITE_DIR = "site"
 
-def clean_build_directory():
-    if os.path.exists(BUILD_DIR):
-        shutil.rmtree(BUILD_DIR)
-    os.makedirs(BUILD_DIR)
-
-def copy_files():
-    for root, dirs, files in os.walk(SOURCE_DIR):
-        for file in files:
-            if file.endswith((".html", ".css", ".js", ".png", ".jpg")):
-                source_path = os.path.join(root, file)
-                shutil.copy(source_path, BUILD_DIR)
+def validate_files():
+    required_files = ["index.html", "style.css"]
+    
+    print("Validating project structure...")
+    
+    for file in required_files:
+        file_path = os.path.join(SITE_DIR, file)
+        if not os.path.exists(file_path):
+            raise FileNotFoundError(f"Missing required file: {file}")
+    
+    print("All required files are present. Ready for deployment.")
 
 def main():
-    print("Starting build process...")
-    clean_build_directory()
-    copy_files()
-    print("Build completed successfully.")
+    validate_files()
+    print("Build check completed successfully.")
 
 if __name__ == "__main__":
     main()
-⚙️ CI/CD Pipeline (GitHub Actions)
+```
 
-This workflow automatically builds and deploys the website when changes are pushed to the main branch.
+---
 
-Create this file:
+## 🔄 Deployment Workflow
 
-.github/workflows/deploy.yml
-GitHub Actions Workflow:
-name: Deploy Website
+1. Develop website locally
+2. Commit changes using Git
+3. Push updates to GitHub repository
+4. GitHub Pages automatically deploys latest version
+5. Live site updates within seconds
 
-on:
-  push:
-    branches:
-      - main
+---
 
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
+## 📂 Project Structure
 
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
-
-      - name: Run Build Script
-        run: python build.py
-
-      - name: Deploy to Server (Namecheap Hosting via FTP/SFTP)
-        uses: SamKirkland/FTP-Deploy-Action@v4
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./dist/
-🔐 Secrets Configuration (GitHub)
-
-To enable deployment securely, the following GitHub Secrets are required:
-
-FTP_SERVER
-FTP_USERNAME
-FTP_PASSWORD
-
-These are configured in:
-GitHub Repository → Settings → Secrets → Actions
-
-🔄 Deployment Workflow
-Code is written and committed locally
-Pushed to GitHub repository (main branch)
-GitHub Actions pipeline automatically triggers
-Python script builds and prepares deployment files
-Files are deployed to Namecheap hosting via FTP
-Live website is updated automatically
-📂 Project Structure
-/project-root
-│── src/
-│   ├── index.html
-│   ├── css/
-│   ├── js/
-│   └── images/
-│
-│── build.py
-│── dist/                # Generated build output
-│── .github/
-│   └── workflows/
-│       └── deploy.yml
-│
+```id="vsp-structure"
+/vspourdecisions
+│── index.html
+│── style.css
+│── script.js
+│── /images
 │── README.md
-📈 Future Improvements
-Add automated testing stage in CI pipeline
-Migrate deployment to AWS S3 + CloudFront
-Implement Terraform for infrastructure as code
-Add monitoring and logging for uptime tracking
-Containerize project using Docker
-👩🏽‍💻 About Me
+```
 
-I am currently transitioning into DevOps Engineering through structured training and hands-on projects. My background in customer service and sales strengthens my communication, problem-solving, and user-focused mindset, which I now apply to technical systems and automation workflows.
+---
 
-📬 Contact
-LinkedIn: (YOUR LINKEDIN URL)
-Email: (YOUR EMAIL)
-⭐ Key Takeaway
+## 📈 Future Improvements
 
-This project demonstrates a real-world DevOps workflow using Python automation, GitHub version control, and CI/CD pipelines, simulating how modern applications are built and deployed in production environments.
+* Add full CI/CD pipeline using GitHub Actions
+* Expand Python automation into real build/deploy scripting
+* Migrate to AWS S3 + CloudFront for enterprise-level architecture
+* Add backend functionality (contact form automation)
+* Implement logging/analytics tracking
+
+---
+
+## 👩🏽‍💻 About Me
+
+I am currently transitioning into **DevOps Engineering** through structured coursework and hands-on projects. My background in Mortgage Underwriting, Risk and sales strengthens my communication, problem-solving, and user-focused approach, which I now apply to technical systems and automation workflows.
+
+---
+
+## 📬 Contact
+
+* LinkedIn: www.linkedin.com/in/yvonda-davis
+* Email: Notaree26@yahoo.com
+
+---
+## ⭐ Key Takeaway
+
+This project demonstrates my ability to deploy and manage a live production website using GitHub-based workflows while applying foundational DevOps principles such as version control, automation thinking, and continuous deployment.
+
+---
